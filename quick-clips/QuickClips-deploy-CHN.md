@@ -118,7 +118,7 @@ aws s3api put-object --bucket $BUCKET_NAME \
 aws s3 cp resources/job-template.json s3://$BUCKET_NAME/job-template/
 ```
 
-- **job-template/**：用于保存创建 MediaConvert 作业时需要用到的作业模板。
+- **output/**：用于保存截取后的视频文件。
 
 ```
 aws s3api put-object --bucket $BUCKET_NAME \
