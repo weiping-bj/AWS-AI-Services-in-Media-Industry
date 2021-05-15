@@ -109,7 +109,7 @@ aws s3api put-object --bucket $BUCKET_NAME \
 
 ```
 aws s3api put-object --bucket $BUCKET_NAME \
---key input/
+--key job-template/
 ```
 
 将本方案中提供的作业模板上传到新创建的目录下：
