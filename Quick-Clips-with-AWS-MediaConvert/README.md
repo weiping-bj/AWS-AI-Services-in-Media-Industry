@@ -30,3 +30,4 @@ API Gateway 调用后端 lambda 函数。lambda 函数启动一个 MediaConvert 
 关于方案的部署过程，请参考 [部署指导](QuickClips-deploy-CHN.md)。  
 方案中各参数的说明，请参考 [使用指导](QuickClips-usage-CHN.md)。
 
+[返回 README](../README.md)

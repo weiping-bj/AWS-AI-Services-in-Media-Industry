@@ -160,3 +160,5 @@ Rekognition 识别镜头分段的结果中包括了镜头（即：幻灯片放�
 ## 部署及使用
 方案的部署过程请参考 [部署说明](SmartSub-deploy-CHN.md)；  
 方案的使用请参考 [使用说明](SmartSub-usage-CHN.md)
+
+[返回 README](../README.md)
