@@ -1,0 +1,49 @@
+{
+  "Comment": "Triggered by API-Gateway",
+  "StartAt": "StartJob",
+  "States": {
+    "StartJob": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:ppt-01-start-job",
+      "InputPath": "$",
+      "ResultPath": "$.StartJob",
+      "Next": "StatusCheck"
+    },
+    "StatusCheck": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:ppt-02-status-check",
+      "InputPath": "$.StartJob",
+      "ResultPath": "$.StatusCheck",
+      "Next": "ChoiceState"
+    },
+    "ChoiceState": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.StatusCheck.Job_Status",
+          "StringEquals": "FINISHED",
+          "Next": "SaveRekoResult"
+        }
+      ],
+      "Default": "wait30s"
+    },
+    "wait30s": {
+      "Type": "Wait",
+      "Seconds": 30,
+      "Next": "StatusCheck"
+    },
+    "SaveRekoResult": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:ppt-03-save-reko-result",
+      "InputPath": "$.StatusCheck",
+      "ResultPath": "$.SaveRekoResult",
+      "Next": "SubCreation"
+    },
+    "SubCreation": {
+      "Type": "Task",
+      "InputPath": "$.SaveRekoResult",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:ppt-04-sub-creation",
+      "End": true
+    }
+  }
+}

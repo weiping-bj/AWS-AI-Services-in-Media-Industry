@@ -8,13 +8,13 @@
 4. 将本方案代码克隆到本地：
 
 ```
-git clone  https://github.com/weiping-bj/Quick-Clips-with-AWS-MediaConvert.git
+git clone  https://github.com/weiping-bj/AWS-AI-Services-in-Media-Industry.git
 ```
 
 进入方案目录：
 
 ```
-cd Quick-Clips-with-AWS-MediaConvert
+cd AWS-AI-Services-in-Media-Industry/Quick-Clips-with-AWS-MediaConvert
 ```
 
 设置部署时需要用到的常量，```ACCOUNT_ID``` 和 ```BUCKET_NAME```：

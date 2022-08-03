@@ -33,13 +33,13 @@
 将本方案原型代码克隆到本地：
 
 ```
-git clone  https://github.com/weiping-bj/Smart-Cutting-using-AWS.git
+git clone  https://github.com/weiping-bj/AWS-AI-Services-in-Media-Industry.git
 ```
 
 进入方案原型目录：
 
 ```
-cd Smart-Cutting-using-AWS
+cd AWS-AI-Services-in-Media-Industry/Smart-Cutting-using-AWS
 ```
 
 设置部署时需要用到的常量，```ACCOUNT_ID``` 和 ```BUCKET_NAME```：

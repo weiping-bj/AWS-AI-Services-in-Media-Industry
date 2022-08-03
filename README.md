@@ -14,7 +14,7 @@ AWS 推出了一系列 [AI 相关](https://aws.amazon.com/cn/machine-learning/ai
 - **方案说明**：利用 Rekognition 进行人脸识别和时间码提取，利用 MediaConvert 进行视频剪辑与合成。
 - **方案收益**：提高人脸识别准确率，减少视频合辑生成的时间。 
 
-## [自动获取宣讲视频中每页 PPT 的讲解词](Smart-Sub-using-AWS/README.md) 
+## [自动获取宣讲视频中每页 PPT 的讲解词](Smart-ASR-on-PPT-Pages/README.md) 
 
 - **场景说明**：在线宣讲视屏中，画面是 PPT 播放，声音是演讲者的语音。本方案可以根据 PPT 的换页时间，自动将宣讲者在每页 PPT 中的讲解转录成文本信息。
 - **方案说明**：利用 Rekognition 识别 PPT 的换页起止时间。依据提取好的时间片段，对 Transcribe 转录出的文本元素进行组合，生成分好片段的文本。
