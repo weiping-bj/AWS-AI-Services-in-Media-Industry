@@ -1,0 +1,45 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": [
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-02-StatusTranscribe:*",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-03-CopySrt2TXT:*",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-06-CopyTXT2Srt:*",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-01-StartTranscribe:*",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-05-StatusTranslate:*",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-04-StartTranslate:*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": [
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-02-StatusTranscribe",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-03-CopySrt2TXT",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-06-CopyTXT2Srt",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-01-StartTranscribe",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-05-StatusTranslate",
+                "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-04-StartTranslate"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+                "xray:GetSamplingRules",
+                "xray:GetSamplingTargets"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+  "Comment": "This state machine is to orchestrate the process of auto-translation for caption.",
+  "StartAt": "StartTranscribe",
+  "States": {
+    "StartTranscribe": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-01-StartTranscribe",
+      "InputPath": "$",
+      "ResultPath": "$.StartTranscribe",
+      "Next": "StatusTranscribe"
+    },
+    "StatusTranscribe": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-02-StatusTranscribe",
+      "InputPath": "$.StartTranscribe.Job_Name",
+      "ResultPath": "$.StatusTranscribe",
+      "Next": "TranscribeStateChoice"
+    },
+    "TranscribeStateChoice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.StatusTranscribe.Job_Status",
+          "StringEquals": "COMPLETED",
+          "Next": "CopySrt2TXT"
+        }
+      ],
+      "Default": "wait5s"
+    },
+    "wait5s": {
+      "Type": "Wait",
+      "Seconds": 5,
+      "Next": "StatusTranscribe"
+    },
+    "CopySrt2TXT": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-03-CopySrt2TXT",
+      "InputPath": "$.StartTranscribe.Job_Name",
+      "ResultPath": "$.CopySrt2TXT",
+      "Next": "StartTranslate"
+    },
+    "StartTranslate": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-04-StartTranslate",
+      "InputPath": "$",
+      "ResultPath": "$.StartTranslate",
+      "Next": "StatusTranslate"
+    },
+    "StatusTranslate": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-05-StatusTranslate",
+      "InputPath": "$.StartTranslate.Translate_Job_Ids",
+      "ResultPath": "$.StatusTranslate",
+      "Next": "TranslateStateChoice"
+    },
+    "TranslateStateChoice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.StatusTranslate.Job_Status",
+          "StringEquals": "COMPLETED",
+          "Next": "CopyTXT2Srt"
+        }
+      ],
+      "Default": "wait10s"
+    },
+    "wait10s": {
+      "Type": "Wait",
+      "Seconds": 10,
+      "Next": "StatusTranslate"
+    },
+    "CopyTXT2Srt": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:<ACCOUNT_ID>:function:amlc-06-CopyTXT2Srt",
+      "InputPath": "$",
+      "ResultPath": "$",
+      "End": true
+    }
+  }
+}
