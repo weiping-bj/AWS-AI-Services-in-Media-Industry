@@ -13,14 +13,14 @@
 5 | IAM Role | APIGatewayToStepFunctions
 6 | IAM Role | amlc-Lambda-Role 
 7 | IAM Role | amlc-SF-Role
-7 | Lambda Function | amlc-01-StartTranscribe
-8 | Lambda Function | amlc-02-StatusTranscribe
-9 | Lambda Function | amlc-03-CopySrt2TXT
-10 | Lambda Function | amlc-04-StartTranslate
-11 | Lambda Function | amlc-05-StatusTranslate
-12 | Lambda Function | amlc-06-CopyTXT2Srt
-13 | Step Functions | Auto-MultiLan-Cap
-14 | API Gateway |
+8 | Lambda Function | amlc-01-StartTranscribe
+9 | Lambda Function | amlc-02-StatusTranscribe
+10 | Lambda Function | amlc-03-CopySrt2TXT
+11 | Lambda Function | amlc-04-StartTranslate
+12 | Lambda Function | amlc-05-StatusTranslate
+13 | Lambda Function | amlc-06-CopyTXT2Srt
+14 | Step Functions | Auto-MultiLan-Cap
+15 | API Gateway |
 
 
 ## 环境准备
